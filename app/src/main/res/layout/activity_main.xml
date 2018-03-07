@@ -1,103 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="io.com.uitask.MainActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="10">
+
         <RelativeLayout
+            android:id="@+id/rv_calender_container"
             android:layout_width="match_parent"
-            android:layout_weight="4"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="4">
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
                 android:id="@+id/cv_date_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
-                android:layout_height="wrap_content">
+                android:minHeight="170dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:minHeight="170dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/iv_backward_date"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_arrow_back_black_32dp"
-                        android:id="@+id/iv_backward_date"/>
+                        android:layout_weight="3"
+                        android:src="@drawable/ic_arrow_back_black_32dp" />
+
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="18"
-                            android:textSize="60sp"/>
+                            android:textSize="60sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Jul 2014"/>
+                            android:text="Jul 2014" />
 
                     </LinearLayout>
+
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/iv_forward_date"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_arrow_forward_black_32dp"
-                        android:id="@+id/iv_forward_date"/>
+                        android:layout_weight="3"
+                        android:src="@drawable/ic_arrow_forward_black_32dp" />
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/launchTwitterAnimation"
+                android:id="@+id/fab_add_Reminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/cv_date_container"
                 android:layout_alignParentEnd="true"
                 android:layout_marginBottom="-28dp"
                 android:layout_marginEnd="16dp"
-                app:fabSize="normal"
-                android:layout_alignBottom="@id/cv_date_container"
                 android:adjustViewBounds="true"
                 android:contentDescription="image"
-                android:src="@drawable/ic_add_black_24dp"
-                 app:backgroundTint="@color/yellow"
                 android:elevation="4dp"
-                />
+                android:src="@drawable/ic_add_black_24dp"
+                app:backgroundTint="@color/yellow"
+                app:fabSize="normal" />
 
             <LinearLayout
+                android:id="@+id/ll_calender_day_container"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_below="@id/cv_date_container"
-                android:background="@color/light_gray"
-                android:layout_height="wrap_content">
+                android:background="@color/light_gray">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
+                    android:layout_gravity="left"
+                    android:gravity="left"
                     android:padding="8dp"
                     android:text="Monday "
-                    android:layout_gravity="left"
-                    android:gravity="left"/>
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </RelativeLayout>
 
 
-
-
-        <android.support.v7.widget.RecyclerView
+        <FrameLayout
+            android:id="@+id/fl_data_time_container"
             android:layout_width="match_parent"
-            android:layout_weight="6"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="6">
 
-        </android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:id="@+id/linearView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone">
 
+                <LinearLayout
+                    android:id="@+id/layoutButtons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/close_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Close" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="One" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="One" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_remainders"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </FrameLayout>
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
