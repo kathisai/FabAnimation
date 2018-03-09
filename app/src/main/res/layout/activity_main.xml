@@ -105,20 +105,29 @@
         </RelativeLayout>
 
 
-        <FrameLayout
-            android:id="@+id/fl_data_time_container"
+        <fabreveal.FABRevealLayout
+            android:id="@+id/fab_reveal_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6">
 
-            <LinearLayout
-                android:id="@+id/linearView"
+            <RelativeLayout
+                android:id="@+id/main_view"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="@color/colorAccent"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_remainders"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/secondary_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:id="@+id/layoutButtons"
@@ -146,17 +155,10 @@
 
 
                 </LinearLayout>
+            </RelativeLayout>
 
-            </LinearLayout>
+        </fabreveal.FABRevealLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_remainders"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </android.support.v7.widget.RecyclerView>
-
-        </FrameLayout>
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
