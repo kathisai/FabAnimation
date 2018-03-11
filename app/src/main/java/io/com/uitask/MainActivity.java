@@ -1,32 +1,33 @@
 package io.com.uitask;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import fabreveal.FABRevealLayout;
-import fabreveal.OnRevealChangeListener;
+import io.com.uitask.adapter.ShopAdapter;
+import io.com.uitask.customViews.FABRevealLayout;
+import io.com.uitask.customViews.OnRevealChangeListener;
+import io.com.uitask.models.Reminder;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int amountToMoveRight = -140;
-    private final int amountToMoveDown = 300;
     @BindView(R.id.rv_calender_container)
-    RelativeLayout mCalenderContainer;
+    LinearLayout mCalenderContainer;
     @BindView(R.id.cv_date_container)
-    CardView mDateContainer;
+    LinearLayout mDateContainer;
     @BindView(R.id.ll_calender_day_container)
     LinearLayout mCalenderDayContainer;
     @BindView(R.id.rv_remainders)
@@ -35,14 +36,15 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fabAdd;
     @BindView(R.id.layoutButtons)
     LinearLayout layoutButtons;
-    @BindView(R.id.close_button)
-    Button closeButton;
+    @BindView(R.id.btn_close)
+    AppCompatButton closeButton;
 
-    @BindView(R.id.fab_reveal_layout)
+    @BindView(R.id.fab_container)
     FABRevealLayout fabRevealLayout;
     Animation alphaAnimation;
     float pixelDensity;
     boolean flag = true;
+    private ShopAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         alphaAnimation = AnimationUtils.loadAnimation(this, R.anim.alpha_anim);
         configureFABReveal(fabRevealLayout);
+        setupRecycler();
 
     }
 
@@ -65,22 +68,31 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSecondaryViewAppeared(final FABRevealLayout fabRevealLayout, View secondaryView) {
-                prepareBackTransition(fabRevealLayout);
             }
         });
     }
 
-    private void prepareBackTransition(final FABRevealLayout fabRevealLayout) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                fabRevealLayout.revealMainView();
-            }
-        }, 2000);
-    }
 
     @OnClick(R.id.fab_add_Reminder)
-    void revelView() {
+    void revealSecondaryView() {
         fabRevealLayout.revealSecondaryView();
     }
+
+    @OnClick(R.id.btn_close)
+    void revealMainView() {
+        fabRevealLayout.revealMainView();
+    }
+
+    private void setupRecycler() {
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new ShopAdapter(new ArrayList<Reminder>(), this);
+        recyclerView.setAdapter(mAdapter);
+
+        recyclerView.addItemDecoration(
+                new DividerItemDecoration(this, 0));
+    }
+
 }

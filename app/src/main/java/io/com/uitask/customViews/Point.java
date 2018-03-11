@@ -1,4 +1,4 @@
-package fabreveal;
+package io.com.uitask.customViews;
 
 public class Point {
 

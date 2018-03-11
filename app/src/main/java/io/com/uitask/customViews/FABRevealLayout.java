@@ -1,12 +1,11 @@
 
-package fabreveal;
+package io.com.uitask.customViews;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
@@ -97,7 +96,7 @@ public class FABRevealLayout extends RelativeLayout {
     private void addCircularRevealView() {
         circularExpandingView = new CircularExpandingView(getContext());
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        params.topMargin = dipsToPixels(FAB_SIZE);
+        params.topMargin = dipsToPixels(80);
         circularExpandingView.setVisibility(View.GONE);
         addView(circularExpandingView, params);
     }
@@ -107,28 +106,28 @@ public class FABRevealLayout extends RelativeLayout {
     }
 
     private void setupInitialState() {
-        setupFABPosition();
-        setupChildViewsPosition();
+//        setupFABPosition();
+        //setupChildViewsPosition();
     }
 
-    private void setupFABPosition() {
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) fab.getLayoutParams();
-        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
-        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            params.rightMargin = dipsToPixels(16);
-            params.topMargin = dipsToPixels(20);
-        }
-        fab.bringToFront();
-    }
+//    private void setupFABPosition() {
+//        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) fab.getLayoutParams();
+//        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+//        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            params.rightMargin = dipsToPixels(16);
+//            params.topMargin = dipsToPixels(20);
+//        }
+//        fab.bringToFront();
+//    }
 
-    private void setupChildViewsPosition() {
-        for (int i = 0; i < childViews.size(); i++) {
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) childViews.get(i).getLayoutParams();
-            params.topMargin = dipsToPixels(FAB_SIZE);
-        }
-        getSecondaryView().setVisibility(GONE);
-    }
+//    private void setupChildViewsPosition() {
+//        for (int i = 0; i < childViews.size(); i++) {
+//            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) childViews.get(i).getLayoutParams();
+//            params.topMargin = dipsToPixels(FAB_SIZE);
+//        }
+//        getSecondaryView().setVisibility(GONE);
+//    }
 
     private boolean isShowingMainView() {
         return getMainView().getVisibility() == VISIBLE;
@@ -208,7 +207,6 @@ public class FABRevealLayout extends RelativeLayout {
 
     private void expandCircle() {
         Animator expandAnimator = circularExpandingView.expand();
-        ;
         expandAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {

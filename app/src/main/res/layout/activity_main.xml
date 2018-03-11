@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,158 +7,316 @@
     tools:context="io.com.uitask.MainActivity">
 
     <LinearLayout
+        android:id="@+id/rv_calender_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/rv_calender_container"
+        <LinearLayout
+            android:id="@+id/cv_date_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4">
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_date_container"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="240dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:minHeight="170dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <ImageView
+                    android:id="@+id/iv_backward_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:src="@drawable/ic_arrow_back_black_32dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18"
+                        android:textSize="60sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jul 2014" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_forward_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:src="@drawable/ic_arrow_forward_black_32dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_calender_day_container"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/cv_date_container"
+            android:layout_marginTop="-20dp"
+            android:background="@color/light_gray">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:minHeight="170dp">
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:padding="8dp"
+                android:text="MONDAY "
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <io.com.uitask.customViews.FABRevealLayout
+        android:id="@+id/fab_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rv_calender_container"
+        android:layout_marginTop="-20dp">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add_Reminder"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="18dp"
+            android:layout_marginRight="8dp"
+            android:adjustViewBounds="true"
+            android:elevation="4dp"
+            android:src="@drawable/ic_add_black_24dp"
+            app:backgroundTint="@color/yellow"
+            app:fabSize="normal"
+            app:rippleColor="@color/yellow" />
+
+
+        <RelativeLayout
+            android:id="@+id/main_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/fab_add_Reminder"
+            android:layout_marginTop="20dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_remainders"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/media_controls_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/fab_add_Reminder"
+            android:layout_marginTop="68dp"
+            android:background="@color/yellow"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:minHeight="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal"
-                    android:weightSum="10">
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:weightSum="7">
 
-                    <ImageView
-                        android:id="@+id/iv_backward_date"
+                    <TextView
+                        style="@style/DaySelectionStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="3"
-                        android:src="@drawable/ic_arrow_back_black_32dp" />
+                        android:layout_weight="1"
+                        android:text="SU" />
 
-                    <LinearLayout
+                    <TextView
+                        style="@style/DaySelectionStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="4"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_weight="1"
+                        android:text="MO" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="18"
-                            android:textSize="60sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jul 2014" />
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/iv_forward_date"
+                    <TextView
+                        style="@style/DaySelectionStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="3"
-                        android:src="@drawable/ic_arrow_forward_black_32dp" />
+                        android:layout_weight="1"
+                        android:text="TU" />
+
+                    <TextView
+                        style="@style/DaySelectionStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="WE" />
+
+                    <TextView
+                        style="@style/DaySelectionStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="TH" />
+
+                    <TextView
+                        style="@style/DaySelectionStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="FR" />
+
+                    <TextView
+                        style="@style/DaySelectionStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="SA" />
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_add_Reminder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/cv_date_container"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="-28dp"
-                android:layout_marginEnd="16dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="image"
-                android:elevation="4dp"
-                android:src="@drawable/ic_add_black_24dp"
-                app:backgroundTint="@color/yellow"
-                app:fabSize="normal" />
-
-            <LinearLayout
-                android:id="@+id/ll_calender_day_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/cv_date_container"
-                android:background="@color/light_gray">
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/layoutSpinners"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Monday "
-                    android:textColor="@android:color/white" />
-            </LinearLayout>
-        </RelativeLayout>
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-        <fabreveal.FABRevealLayout
-            android:id="@+id/fab_reveal_layout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6">
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="H"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
 
-            <RelativeLayout
-                android:id="@+id/main_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/spinner_bg"
+                            android:gravity="center">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_remainders"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                            <android.support.v7.widget.AppCompatSpinner
+                                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/hours_arrays"
+                                android:gravity="center" />
+                        </RelativeLayout>
+                    </LinearLayout>
 
-                </android.support.v7.widget.RecyclerView>
-            </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/secondary_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="M"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/spinner_bg"
+                            android:gravity="center">
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:entries="@array/hours_arrays" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="S"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/spinner_bg"
+                            android:gravity="center">
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/hours_arrays" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layoutButtons"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="16dp"
+                    android:paddingTop="16dp">
 
-                    <Button
-                        android:id="@+id/close_button"
+                    <android.support.v7.widget.AppCompatButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Close" />
+                        android:layout_marginEnd="16dp"
+                        android:text="Begin"
+                        android:textAllCaps="false" />
 
-                    <Button
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/btn_close"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="One" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="One" />
+                        android:layout_marginStart="16dp"
+                        android:backgroundTint="@color/light_red"
+                        android:text="Cancel"
+                        android:textAllCaps="false" />
 
 
                 </LinearLayout>
-            </RelativeLayout>
+            </LinearLayout>
 
-        </fabreveal.FABRevealLayout>
+        </RelativeLayout>
 
-    </LinearLayout>
 
-</android.support.v7.widget.CardView>
+    </io.com.uitask.customViews.FABRevealLayout>
+</RelativeLayout>

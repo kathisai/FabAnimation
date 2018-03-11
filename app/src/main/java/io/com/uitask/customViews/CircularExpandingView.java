@@ -1,5 +1,5 @@
 
-package fabreveal;
+package io.com.uitask.customViews;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
