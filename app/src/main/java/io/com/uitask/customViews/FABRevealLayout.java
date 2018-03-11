@@ -53,10 +53,6 @@ public class FABRevealLayout extends RelativeLayout {
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
         setupView(child);
         super.addView(child, index, params);
-
-        if (areAllComponentsReady()) {
-            setupInitialState();
-        }
     }
 
     private void setupView(View child) {
@@ -105,29 +101,6 @@ public class FABRevealLayout extends RelativeLayout {
         return fab != null && childViews.size() == MAX_CHILD_VIEWS;
     }
 
-    private void setupInitialState() {
-//        setupFABPosition();
-        //setupChildViewsPosition();
-    }
-
-//    private void setupFABPosition() {
-//        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) fab.getLayoutParams();
-//        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
-//        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            params.rightMargin = dipsToPixels(16);
-//            params.topMargin = dipsToPixels(20);
-//        }
-//        fab.bringToFront();
-//    }
-
-//    private void setupChildViewsPosition() {
-//        for (int i = 0; i < childViews.size(); i++) {
-//            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) childViews.get(i).getLayoutParams();
-//            params.topMargin = dipsToPixels(FAB_SIZE);
-//        }
-//        getSecondaryView().setVisibility(GONE);
-//    }
 
     private boolean isShowingMainView() {
         return getMainView().getVisibility() == VISIBLE;
