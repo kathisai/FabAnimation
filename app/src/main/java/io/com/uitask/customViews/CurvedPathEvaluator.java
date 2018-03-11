@@ -2,6 +2,9 @@ package io.com.uitask.customViews;
 
 import android.animation.TypeEvaluator;
 
+/**
+ * Created by saiprathap on 3/8/2018.
+ */
 public class CurvedPathEvaluator implements TypeEvaluator<Point> {
 
     @Override

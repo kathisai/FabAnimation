@@ -4,6 +4,9 @@ package io.com.uitask.customViews;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by saiprathap on 3/8/2018.
+ */
 public class CurvedAnimator {
 
     protected List<Point> points = new ArrayList<>();

@@ -1,5 +1,8 @@
 package io.com.uitask.customViews;
 
+/**
+ * Created by saiprathap on 3/8/2018.
+ */
 public class Point {
 
     protected float x, y;

@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 
+/**
+ * Created by saiprathap on 3/8/2018.
+ */
+
 public class CircularExpandingView extends View {
 
     protected static final int ANIMATION_DURATION = 300;

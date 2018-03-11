@@ -13,7 +13,7 @@ import io.com.uitask.R;
 import io.com.uitask.models.Reminder;
 
 /**
- * Created by skathi on 3/8/2018.
+ * Created by saiprathap on 3/8/2018.
  */
 
 public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

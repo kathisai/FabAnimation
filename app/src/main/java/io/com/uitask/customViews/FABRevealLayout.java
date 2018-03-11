@@ -18,6 +18,9 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by saiprathap on 3/8/2018.
+ */
 public class FABRevealLayout extends RelativeLayout {
 
     private static final int MAX_CHILD_VIEWS = 2;
